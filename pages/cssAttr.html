@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="/css/bootstrap.css" /> -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>css 속성 선택기</title>
+  <style>
+    article #firstLine::first-line {
+      font-size: 1.6rem;
+    }
+
+    #firstLine::before {
+      content: "This should show before the other content. ";
+    }
+
+    #firstLine::after {
+      content: " ➥";
+    }
+
+    article #firstLine:first-child::first-line {
+      color: red;
+    }
+
+    .box-pheudo-style::before {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-color: rebeccapurple;
+      border: 2px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="h1">MDN CSS 공부 페이지</h1>
+
+    <nav id="navUl">
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/pages/mdn-table-iframe-svg.html">table, iframe, svg</a></li>
+        <li><a href="/pages/cssAttr.html">css 속성</a></li>
+        <li><a href="/pages/js-01-basic.html">js 기본</a></li>
+        <li><a href="/pages/js-02-array_if.html">js array, if</a></li>
+      </ul>
+    </nav>
+
+  </header>
+  <hr>
+  <article>
+    <h2>CSS 속성 선택 방법</h2>
+    <ul>
+      <li> a[title] ; title을 포함하고 있는</li>
+      <li>li[class^="a"] ;a로 시작</li>
+      <li>li[class$="a"] ; a로 끝나는 것</li>
+      <li>li[class*="a"] ; a를 포함하고 있는...</li>
+      <li>li[class~="a"] ; 정확히 a이거나(공백으로 구분) a를 포함</li>
+      <li>li[class^="a" i] ; 대소문자 구분 무시 i</li>
+      <li>p::first-line ; p의 첫번째 줄</li>
+      <li>p::first-letter ; p의 첫번째 글자</li>
+      <li>p *:first-child ; p의 첫번째 요소</li>
+    </ul>
+    <h2>결합자 하위, 동등 계위 선택</h2>
+    <ul>
+      <li>article p ; article 밑에 있는 모든 요소 선택(deepth가 1보다 커도 적용됨)</li>
+      <li>article > p ; 직계 자식 요소만 선택(deepth가 1보다 크면 적용안됨)</li>
+      <li>p + img ; p에 대해 첫번째 형제 관계인 img에 적용됨</li>
+      <li>p ~ img ; p에 대해 모든 형제 관계 img에 적용됨</li>
+    </ul>
+    <h2>속성 상속 제어기</h2>
+    <ul>
+      <li>inherit ; 부모 요소의 속성 값과 동일</li>
+      <li>initial ; 브라우저의 기본</li>
+      <li>unset ;속성이 자연적으로 상속되면 inherit 된 것처럼 작동하고 그렇지 않으면 initial 처럼 작동 </li>
+    </ul>
+    <p> className { all: unset } 하면 모든 속성을 지움 </p>
+    <pre>
+선택자	              Thousands	Hundreds	Tens	Ones	Total specificity
+h1	                    0	        0        	0	    1	    0001
+h1 + p::first-letter	  0       	0	        0    	3   	0003
+li > a[href*="en-US"] > .inline-warning
+                      	0	        0       	2   	2   	0022
+#identifier	            0	        1       	0	    0   	0100
+inline 요소             1       	0       	0   	0   	1000
+    </pre>
+    <p id="firstLine">화면에 보이는 첫번째 줄에 적용됨. <em>이 것은 첫번째 요소</em> <br>Veggies es bonus vobis, proinde vos postulo essum
+      onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.soi pea sprouts.</p>
+    <p class="box-pheudo-style">Content in the box in my HTML page</p>
+    <h2>overflow: hidden ; overflow-x:scroll ; overflow-y: scroll; overflow: auto;</h2>
+    <h2>Attribute substring matching selectors</h2>
+    <ul>
+      <li class="a">Item 1</li>
+      <li class="ab">Item 2</li>
+      <li class="bca">Item 3</li>
+      <li class="bcabc">Item 4</li>
+      <li class="Abc">Case insensitivity</li>
+    </ul>
+    <blockquote cite="https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote">
+      <p> <strong>HTML <code>&lt;blockquote&gt;</code> 요소</strong>
+        <em>(또는HTML 인용 블록 요소)는 안쪽의 텍스트가 긴 인용문임을 나타냅니다.</em>
+      </p>
+    </blockquote>
+
+    <p> 인용구 요소 — <code>&lt;q&gt;</code> — 는
+      <q cite="https://developer.mozilla.org/ko/docs/Web/HTML/Element/q">
+        단락 나누기가 필요 없는 짧은 인용구를 위한 것입니다. </q>
+      — <a href="/ko/docs/Web/HTML/Element/q"><cite>MDN q 페이지</cite></a>.
+    </p>
+    <p> 제 생각에는 그린 <abbr title="목사">목사</abbr>가 전기톱으로 부엌에서 한 것 같아요. </p>
+  </article>
+  <footer>&copy;Copyright FOR ME seesak html css and javascript in MDN</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+h1 {
+  display: inline-block;
+  text-align: center;
+  background-color: #444;
+  color: aliceblue;
+  font-size: 2.5vw;
+  font-family: "Roboto", "Malgun Gothic", "Courier New", Courier, monospace;
+  font-weight: 900;
+  padding: 8px 20px;
+  margin: 0;
+}
+h2,
+h3 {
+  margin: 10px 0 10px 0;
+  font-family: "Roboto", "Malgun Gothic", "Courier New", Courier, monospace;
+}
+h3::before {
+  content: "» ";
+}
+p {
+  font-size: 1.2rem;
+  font-family: "Roboto", "Malgun Gothic";
+  margin: 4px 0;
+  text-transform: capitalize;
+  /* font-weight: bold; */
+}
+header {
+  display: flex;
+  justify-content: space-between;
+}
+nav {
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+  background-color: blanchedalmond;
+  /* padding: 10px 0; */
+  margin: 0;
+}
+nav ul {
+  display: flex;
+  justify-items: center;
+
+  justify-content: space-between;
+  gap: 2rem;
+  list-style-type: none;
+  font-size: 1.6vw;
+  font-weight: 600;
+  padding: 1vh 20px 0 20px;
+  text-align: center;
+}
+
+nav form {
+  /* padding-top: 5px; */
+  padding-right: 30px;
+}
+nav a:link {
+  color: blue;
+}
+nav a:visited {
+  color: blue;
+}
+nav a:hover {
+  cursor: pointer;
+  color: red;
+}
+/* nav li::before {
+  content: "😍 ";
+  } */
+/* #navUl {
+    margin: 0px;
+    padding: 10px 0;
+    } */
+
+article,
+aside,
+footer,
+section {
+  margin: 10px 15px;
+}
+article {
+  margin-bottom: 50px;
+}
+
+table {
+  background-color: #efefef;
+  text-align: center;
+}
+table,
+td,
+th {
+  border: 1px solid #444;
+  border-collapse: collapse;
+}
+th[colspan="2"] {
+  color: red;
+}
+th {
+  padding: 2px 8px;
+}
+
+pre,
+code,
+kbd {
+  font-size: 1rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 12px 0;
+  font-style: italic;
+}
+kbd {
+  color: #999;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: wheat;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+}
+
+.addedElement {
+  font: 20px/30px Roboto, sans-serif;
+  padding-top: 10px;
+}
+
+hr,
+#hr {
+  margin: 0;
+  padding: 0;
+}
+@media screen and (min-width: 1000px) {
+  main {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+}
+@media screen and (max-width: 1000px) {
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+}

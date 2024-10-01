@@ -11,7 +11,7 @@
       let responseData = request.response;
       creatSomeElementFunction(responseData);
      }
-> 8. # memnu를 구성하고 자 할때
+> 8. memnu를 구성하고 자 할때
 >   function creatSomeElementFunction(responseData) { 
       document.querySelector("#id").outerHTML = responseData };
 

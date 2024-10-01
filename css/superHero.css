@@ -1,0 +1,11 @@
+.superhero {
+   border: 1px solid #aaa;
+   padding: 12px;
+   margin: 10px;
+}
+#heroIntro {
+   text-decoration: underline; text-underline-offset : 8px; text-decoration-color: green;
+}
+#heroSquad {
+   display: flex; gap: 2rem; justify-content: center; margin-top: 2rem;
+}

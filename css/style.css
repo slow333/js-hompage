@@ -12,38 +12,39 @@
 body {
   font-family: "Noto Sans KR", serif;
   position: relative;
+
 }
 ::-webkit-scrollbar {
   display: none;
 }
 
 article {
-  margin: 90px 10px 40px 20px;
+  margin: 70px 10px 50px 20px;
+}
+section {
+  border: 1px solid #aaa;
+  padding: 4px 8px 8px 4px;
+  margin: 8px 18px 8px 10px;
 }
 aside {
   margin: 0 0 44px 20px;
-}
-footer{
-  margin: 36px 10px 28px 20px;
-}
-aside a:visited, aside a:link {
-  text-decoration: none;
-  color: blue;
-}
-section {
-  border-left: 1px solid #999;
-  padding-left: 8px;
-  margin: 4px 0;
 }
 
 footer {
   position: fixed;
   bottom: 0;
-  background-color: wheat;
+  background-color: orangered;
+  color: #fff;
   display: block;
   width: 100%;
   margin: 0;
-  padding: 4px;
+  padding: 8px 1rem;
+  box-shadow: 0 0 4px 0 black, 0 0 10px 0 gray;
+
+}
+aside a:visited, aside a:link {
+  text-decoration: none;
+  color: blue;
 }
 
 /* ====== nav menu ====== */
@@ -52,38 +53,53 @@ header {
   top: 0;
   width: 100%;
   z-index: 9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-image: url("/images/header.png"); */
+  background-size: cover;
+  /* opacity: 0.4; */
+  background-color: #333;
+  min-width: 900px;
+  border-top: 4px solid orangered;
+  border-bottom: 4px solid orangered;
+  /* box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.19); */
 }
 header h1 {
   font-size: 1.4rem;
-  padding: 0 0 6px 1rem;
-  background-color: rgb(255, 116, 67);
+  padding: 6px 2rem;
+  /* background-color: rgb(255, 116, 67); */
   color: wheat;
+  width: auto;
+  margin: 0;
+  border-right: solid 4px orangered;
+  border-left: solid 4px orangered;
 }
 .navbar {
   overflow: hidden;
   background-color: #333;
+  display: flex;
+  border-right: solid 4px orangered;
+  border-left: solid 4px orangered;
 }
-
-.navbar a {
-  float: left;
+.navbar a, .subnav .subnavbtn {
   font-size: 16px;
   color: white;
+  padding: 10px 16px;
+}
+.navbar a {
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
 }
 
 .subnav {
-  float: left;
+  float: right;
   overflow: hidden;
 }
 
 .subnav .subnavbtn {
-  font-size: 16px;
   border: none;
   outline: none;
-  color: white;
-  padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
@@ -97,17 +113,22 @@ header h1 {
 .subnav-content {
   display: none;
   position: absolute;
-  left: 0;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
   background-color: red;
   width: 100%;
+  /* 첫번째 적용 : 우측이동, 아래이동, 3번째; 흐린정도 깊이, 4번째; 전체 깊이 // 두번째 적용*/
+  box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2), 0 6px 0 0 rgba(0, 0, 0, 0.1); */
   z-index: 1;
 }
 
 .subnav-content a {
-  float: left;
+  float: right;
   color: white;
   text-decoration: none;
-  padding: 0 16px 4px 16px;
+  padding: 8px 16px 4px 16px;
 }
 
 .subnav-content a:hover {
@@ -116,7 +137,9 @@ header h1 {
 }
 
 .subnav:hover .subnav-content {
-  display: block;
+  display: flex;
+  justify-content: center;
+  text-align: center;
   z-index: 20;
 }
 
@@ -140,8 +163,8 @@ th {
 
 /* =================== common element tag */
 h2,h3,h4,h5 {
-  margin: 10px 0 10px 0;
-  width: 90%;
+  margin: 10px 0 6px 6px;
+  width: 100%;
 }
 h3::before {
   content: "» ";
@@ -163,12 +186,15 @@ p, pb {
   font-family: "Roboto", "Malgun Gothic", serif;
   margin: 4px 0;
   padding: 2px 10px;
-  width: 94%;
+  /* width: 92%; */
   word-break: break-word;
   line-height: 1.5rem;
 }
 pb {
-  font-weight: bold;
+  font-weight: bold;  padding: 4px 10px;
+  display: block;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 pre,
 code,
@@ -192,7 +218,9 @@ code::after {
 kbd {
   color: #999;
 }
-
+ul {
+  width: 92%;
+}
 .addedElement {
   font: 20px/30px Roboto, sans-serif;
   padding-top: 10px;
@@ -212,12 +240,19 @@ button#removeElement:hover {
   background-color: darkblue;
 }
 
-.btnSearch {
-  background-color: green;
-  padding: 4px 9px;
+button.normal, button.btnSearch {
+  background-color: #333;
+  color: wheat;
+  padding: 4px 6px;
   font-size: 1rem;
+  font-weight: bold;
   border: none;
-  border-radius: 9px;
+  border-radius: 6px;
+}
+button.normal:hover {
+  cursor: pointer;
+  background-color: #444;
+  
 }
 /* media set */
 @media screen and (min-width: 800px) {

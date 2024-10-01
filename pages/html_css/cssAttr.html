@@ -39,7 +39,7 @@
 <body>
   <header>
     <h1 class="h1">MDN CSS 공부 페이지</h1>
-    <div data-include-path="/pages/navbar.html"></div>
+   <div id="menuNavBar"></div>
   </header>
   <article>
     <h2>CSS 속성 선택 방법</h2>
@@ -68,16 +68,62 @@
       <li>unset ;속성이 자연적으로 상속되면 inherit 된 것처럼 작동하고 그렇지 않으면 initial 처럼 작동 </li>
     </ul>
     <p> className { all: unset } 하면 모든 속성을 지움 </p>
-    <pre>
-선택자	              Thousands	Hundreds	Tens	Ones	Total specificity
-h1	                    0	        0        	0	    1	    0001
-h1 + p::first-letter	  0       	0	        0    	3   	0003
-li > a[href*="en-US"] > .inline-warning
-                      	0	        0       	2   	2   	0022
-#identifier	            0	        1       	0	    0   	0100
-inline 요소             1       	0       	0   	0   	1000
-    </pre>
-    <p id="firstLine">화면에 보이는 첫번째 줄에 적용됨. <em>이 것은 첫번째 요소</em> <br>Veggies es bonus vobis, proinde vos postulo essum
+    <h3>CSS 적용시 우선 순위 계산하는 법</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>선택자</th>
+        <th>Thousands</th>
+        <th>Hundreds</th>
+        <th>Tens</th>
+        <th>Ones</th>
+        <th>Total specificity</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th>h1</th>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0001</td>
+      </tr>
+      <tr>
+        <th>h1 + p::first-letter</th>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>3</td>
+        <td>0003</td>
+      </tr>
+      <tr>
+        <th>li > a[href*="en-US"] > .inline-warning</th>
+        <td>0</td>
+        <td>0</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0022</td>
+      </tr>
+      <tr>
+        <th>#identifier</th>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0100</td>
+      </tr>
+      <tr>
+        <th>inline 요소</th>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1000</td>
+      </tr>
+      </tbody>
+    </table>
+    <p id="firstLine">화면에 보이는 첫번째 줄에 적용됨. <em>이 것은 첫번째 요소(em)</em> <br>Veggies es bonus vobis, proinde vos postulo essum
       onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.soi pea sprouts.</p>
     <p class="box-pheudo-style">Content in the box in my HTML page</p>
     <h2>overflow: hidden ; overflow-x:scroll ; overflow-y: scroll; overflow: auto;</h2>

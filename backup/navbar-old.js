@@ -1,17 +1,20 @@
-const requestUrl = "/pages/navbar.html";
-let req = new XMLHttpRequest();
-
-req.open("GET", requestUrl);
-req.responseType = "text";
-req.send();
-
-req.onload = function () { // async event handler
-   let text = req.response;
-   document.querySelector("#menuNavBar").outerHTML = text;
-   setCurrentPageNav();
-}
-
-function setCurrentPageNav() {
+window.addEventListener("load", function () {
+   let allElements = document.getElementsByTagName("*");
+   Array.prototype.forEach.call(allElements, function (el) {
+      let includePath = el.dataset.includePath;
+      if (includePath) {
+         let XHR = new XMLHttpRequest();
+         XHR.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+               el.outerHTML = this.responseText;
+            }
+         };
+         XHR.open("GET", includePath, true);
+         XHR.send();
+      }
+   });
+});
+setTimeout(function () {
    const btns = document.querySelectorAll(".subnavbtn");
    const mainAs = document.querySelectorAll(".navbar .mainnav");
    const subAs = document.querySelectorAll(".subnav-content a");
@@ -23,9 +26,9 @@ function setCurrentPageNav() {
          let eNextSibling = target.nextSibling.nextSibling;
          let btnNextSibling = target.nextSibling.nextSibling;
          // console.log(eNextSibling.textContent);
-         if (eNextSibling.style.display === "flex") {
+         if (eNextSibling.style.display === "block") {
             eNextSibling.style.display = "none";
-            article.style.marginTop = '62px';
+            article.style.marginTop = '90px';
             return;
          }
 
@@ -37,9 +40,8 @@ function setCurrentPageNav() {
             mainA.style.backgroundColor = "#333";
          })
          if (target.textContent === btn.textContent) {
-            eNextSibling.style.display = "flex";
-            eNextSibling.style.justifyContent = "center";
-            article.style.marginTop = '92px';
+            eNextSibling.style.display = "block";
+            article.style.marginTop = '120px';
             target.style.backgroundColor = 'red';
          }
       })
@@ -48,10 +50,9 @@ function setCurrentPageNav() {
    subAs.forEach(suba => {
       if (window.location.href === suba.href) {
          suba.style.backgroundColor = "darkred";
-         suba.parentNode.style.display = "flex";
-         suba.parentNode.style.justifyContent = "center";
+         suba.parentNode.style.display = "block";
          suba.parentNode.parentNode.style.backgroundColor = "red";
-         article.style.marginTop = '92px';
+         article.style.marginTop = '120px';
       } else {
          suba.style.backgroundColor = "red";
       }
@@ -60,8 +61,7 @@ function setCurrentPageNav() {
    mainAs.forEach(mainA => {
       if (window.location.href === mainA.href) {
          mainA.style.backgroundColor = "red";
-         article.style.marginTop = '60px';
+         article.style.marginTop = '90px';
       }
    });
-}
-
+}, 250)

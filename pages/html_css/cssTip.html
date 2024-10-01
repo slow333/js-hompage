@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css" />
+  <script defer src="/js/navbar.js"></script>
+  <script defer type="module" src="/js/exportFunc.js"></script>
+  <title>css 잘 잊어버리는 것</title>
+</head>
+
+<body>
+  <header>
+    <h1 class="h1">CSS 잘 잊어버리는 것</h1>
+    <div id="menuNavBar"></div>
+  </header>
+  <article>
+    <section>
+      <h2>CSS Box shadow</h2>
+      <ul>
+        <li>/* 첫번째 적용 : 우측이동, 아래이동, 3번째; 흐린정도 깊이, 4번째; 전체 깊이 그리고 색*/</li>
+        <li>/* 2개를 적용하면 두개가 다 적용되어 그라데이션 효과가 있음 */</li>
+        <li>box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2), 0 6px 0 0 rgba(0, 0, 0, 0.1);</li>
+      </ul>
+      </section>
+    <section>
+      <h3>font size 폭이나 높이에 따라 자동 조절하기</h3>
+
+      <p> vh 나 vw를 사용하면 화면이나 자기가 속한 dom의 크기에 따라 자동 조절됨 </p>
+      <code> nav ul {
+  display: flex;
+  justify-items: center;
+
+  justify-content: space-between;
+  gap: 2rem;
+  list-style-type: none;
+  font-size: 1.6vw;
+  font-weight: 600;
+  padding: 1vh 20px 0 20px;
+  text-align: center;
+  } </code>
+    </section>
+    <section>
+      <h3>js에서 css를 다루기 위한 방법</h3>
+  
+      <h4> element에 style 적용하기 </h4>
+      <p>style.css속성명 -기존에 정의된 style에 새로운 속성을 추가</p>
+      <p>style.cssText - 기존에 정의된 style을 지우고, cssText로 덮어 씀</p>
+      <code>#javascript file
+    const el = document.getElementById("greeting");
+  
+    el.style.backgroundColor = "red";
+    el.style.color = "red";
+    el.style.fontWeight = "bold";
+    el.style.backgroundImage = "url(/img/waring.png)";
+    el.style.cssText = 'color:blue; background-color: yellow'; //기존 것 덮어 씀, 조심
+    el.classList.add(newClassName);
+    el.textContent ="new message";
+    el.setAttribute("class","msgBox"); </code>
+   </section>
+    <section>
+      <h4>element에서 style 속성 읽기</h4>
+        <h5>style 속성과 getComputedStyle()을 사용하는 것에는 차이가 있습니다.</h5>
+    
+        <p>style 속성 : inline으로 정의된 style 속성만 읽어옵니다.</p>
+        <p>getComputedStyle() : inline 뿐만 아니라, style 및 class속성,
+          css 파일로 정의된 style 속성을 모두 읽어옵니다</p>
+    
+        <h5>style 속성 읽어 오기</h5>
+        <code> Element.innerText += element.style + '\n';
+    Element.innerText += element.style.color + '\n';
+    Element.innerText += element.style.backgroundColor + '\n';
+        </code>
+        <h5>getComputedStyle() 하면 CSS 속성값을 답은 객체를 리턴</h5>
+        <code>// 3. getComputedStyle (스타일 정보 읽어오기)
+    const color = getComputedStyle(element).color;
+    const bgColor = getComputedStyle(element).backgroundColor;
+  
+    // 4. Style 출력
+    printElement.innerText = 'color : ' + color + '\n';
+    printElement.innerText += 'background-color : ' + bgColor + '\n';
+        </code>
+    </section>
+    <section>
+      <h2>svg 이미지 선택 및 삽입 방법</h2>
+      <svg version="1.1" baseProfile="full" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+        <!-- <rect width="100%" height="100%" fill="black" /> -->
+        <circle cx="50" cy="50" r="30" fill="blue" />
+      </svg>
+      <svg width="100%" height="100%">
+        <rect width="100%" height="100%" fill="red" />
+        <circle cx="100%" cy="100%" r="150" fill="blue" stroke="black" />
+        <polygon points="240,0 240,300 0,225 50,50" fill="green" />
+        <text x="50" y="100" font-family="Verdana" font-size="55" fill="white" stroke="white" stroke-width="3">
+          Hello!
+        </text>
+      </svg>
+    </section>
+  </article>
+  <footer>&copy;Copyright FOR ME seesak html css and javascript in MDN</footer>
+
+</body>
+
+</html>

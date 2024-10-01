@@ -1,17 +1,20 @@
-const requestUrl = "/pages/navbar.html";
-let req = new XMLHttpRequest();
-
-req.open("GET", requestUrl);
-req.responseType = "text/plain";
-req.send();
-
-req.onload = function () {
-   let text = req.response;
-   document.querySelector("#menuNavBar").outerHTML = text;
-   setCurrentPageNav();
-}
-
-function setCurrentPageNav() {
+window.addEventListener("load", function () {
+   let allElements = document.getElementsByTagName("*");
+   Array.prototype.forEach.call(allElements, function (el) {
+      let includePath = el.dataset.includePath;
+      if (includePath) {
+         let XHR = new XMLHttpRequest();
+         XHR.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+               el.outerHTML = this.responseText;
+            }
+         };
+         XHR.open("GET", includePath, true);
+         XHR.send();
+      }
+   });
+});
+setTimeout(function () {
    const btns = document.querySelectorAll(".subnavbtn");
    const mainAs = document.querySelectorAll(".navbar .mainnav");
    const subAs = document.querySelectorAll(".subnav-content a");
@@ -61,5 +64,4 @@ function setCurrentPageNav() {
          article.style.marginTop = '90px';
       }
    });
-}
-
+}, 250)

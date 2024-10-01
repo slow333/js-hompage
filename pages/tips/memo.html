@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width" name="viewport"/>
+  <title>My page title</title>
+  <link href="/css/style.css" rel="stylesheet"/>
+
+  <script defer src="/js/navbar.js"></script>
+  <script defer src="/js/exportFunc.js" type="module"></script>
+</head>
+
+<body>
+<header>
+  <h1>MEMO Page</h1>
+  <div data-include-path="/pages/navbar.html"></div>
+</header>
+
+<main>
+  <article>
+    <h1>MEMO 입니다.</h1>
+    <h2>간단한 메모를 적어 놓는 곳입니다.</h2>
+    <p>뭔가 내용... </p>
+
+    <section>
+      <h3>관련 홈페이지들 입니다.</h3>
+      <p>
+        MDN, W3C, JS 튜토리얼 홈페이지
+      </p>
+    </section>
+  </article>
+
+  <aside>
+    <h2>관련 페이지</h2>
+
+    <ul>
+      <li><a href="https://developer.mozilla.org/ko/docs/Learn/HTML">MDN HTML 공부 페이지</a></li>
+      <li><a href="https://developer.mozilla.org/ko/docs/Learn/CSS">MDN CSS 공부 페이지</a></li>
+      <li><a href="https://developer.mozilla.org/ko/docs/Learn/JavaScript/">MDN JS 공부 페이지</a></li>
+      <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects">JS 표준 내장 객체</a></li>
+      <li><a href="https://www.w3.org/TR/">W3C 표준화 페이지</a></li>
+      <li><a href="https://ko.javascript.info/">모던 JavaScript 튜토리얼</a></li>
+    </ul>
+  </aside>
+</main>
+
+<footer>
+  <p>©Copyright 2050 by nobody. All rights reversed.</p>
+</footer>
+</body>
+
+</html>

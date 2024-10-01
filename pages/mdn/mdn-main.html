@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>MDN HTML documents</title>
+  <script defer src="/js/navbar.js"></script>
+  <script defer type="module" src="/js/exportFunc.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>MDN HTML Study page</h1>
+    <div data-include-path="/pages/navbar.html"></div>
+  </header>
+  <article>
+    <p> <a href="/ko/docs/Web/HTML/Element/blockquote">
+        <cite>MDN 블록 인용구 페이지</cite></a>에 따르면 </p>
+
+    <blockquote cite="https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote">
+      <p> <strong>HTML <code>&lt;blockquote&gt;</code> 요소</strong>
+        <em>(또는HTML 인용 블록 요소)는 안쪽의 텍스트가 긴 인용문임을 나타냅니다.</em>
+      </p>
+    </blockquote>
+
+    <p> 인용구 요소 — <code>&lt;q&gt;</code> — 는
+      <q cite="https://developer.mozilla.org/ko/docs/Web/HTML/Element/q">
+        단락 나누기가 필요 없는 짧은 인용구를 위한 것입니다. </q>
+      — <a href="/ko/docs/Web/HTML/Element/q"><cite>MDN q 페이지</cite></a>.
+    </p>
+    <p> 제 생각에는 그린 <abbr title="목사">목사</abbr>가 전기톱으로 부엌에서 한 것 같아요. </p>
+    <address>
+      <p>
+        크리스 밀스<br />
+        맨체스터<br />
+        그림노스<br />
+        영국
+      </p>
+
+      <ul>
+        <li>전화: 01234 567 890</li>
+        <li>이메일: me@grim-north.co.uk</li>
+      </ul>
+    </address>
+    <pre><code>const para = document.querySelector('p');
+
+    para.onclick = function() {
+      alert('Owww, stop poking me!');
+    }</code></pre>
+
+    <p> You shouldn't use presentational elements like <code>&lt;font&gt;</code> and
+      <code>&lt;center&gt;</code>. </p>
+
+    <p> In the above JavaScript example, <var>para</var> represents a paragraph
+      element. </p>
+
+    <p>Select all the text with <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>A</kbd>.</p>
+
+    <pre>$ <kbd>ping mozilla.org</kbd>
+    <samp>PING mozilla.org (63.245.215.20): 56 data bytes
+    64 bytes from 63.245.215.20: icmp_seq=0 ttl=40 time=158.233 ms</samp></pre>
+    <time datetime="2016-01-20">20 January 2016</time>
+
+  </article>
+  <footer>&copy;Copyright FOR ME seesak html css and javascript in MDN</footer>
+</body>
+
+</html>

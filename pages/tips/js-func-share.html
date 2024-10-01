@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon2.png">
+  <title>My HTML CSS study </title>
+  <!-- <link rel="stylesheet" href="/css/bootstrap.css" /> -->
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <script defer src="/js/navbar.js"></script>
+  <script defer type="module" src="/js/exportFunc.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="h1">TIPs And Tech</h1>
+    <div data-include-path="/pages/navbar.html"></div>
+  </header>
+  <main>
+    <article>
+      <h1>TIPs Page</h1>
+     <hr>
+      <section>
+        <h3>javascript function 분리 구성하기</h3>
+
+        <p>html page에서 script 적용 시에 &lt;script defer <strong>type="module"</strong> src="위치/파일">을 추가해야함.
+          <br>그리고 package.json 파일에
+          <pre><code>{"type": "module",
+ "dependencies": ...
+} </code></pre>를 추가해야함</p>
+        <p>그리고 공유하고자 하는 파일에 export {함수1, 함수2, ...}
+          <br>사용하는 파일에서 import { 함수1, 함수2, ...} from "./공유하는파일" 해주어야함</p>
+        <p>그리고 함수 파일을 분리해서 별도로 구성하고
+          <br>원하는 값을 얻는 내용은 해당 html 파일에 넣어야함.
+          <br>안 그러고 함수를 정의하고 appendChild 를 사용하면 모든 html 파일에 해당
+          기능이 적용되어 모든 html 파일에 appendChild가 수행됨</p>
+
+        <p>그러니까 function은 별도의 파일로 정의하고 사용하는 쪽에서 함수를 호출하여
+          사용해야 함 </p>
+      </section>
+    </article>
+    <!-- the aside content can also be nested within the main content -->
+  </main>
+
+  <footer>©Copyright 2050 by nobody. All rights reversed.</footer>
+</body>
+
+</html>

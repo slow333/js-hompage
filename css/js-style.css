@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-button {
+button#update {
   font: normal small-caps bold 20px/30px Arial, sans-serif;
   padding: 14px;
   background-color: #000;
@@ -8,7 +8,7 @@ button {
   border: none;
   border-radius: 16px;
 }
-button:hover {
+button#update:hover {
   cursor: pointer;
   background-color: green;
 }

@@ -4,96 +4,90 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon2.ico">
   <title>My HTML CSS study </title>
-  <!-- <link rel="stylesheet" href="/css/bootstrap.css" /> -->
   <link rel="stylesheet" href="/css/style.css" />
+  <script defer src="/js/navbar.js"></script>
+  <script defer type="module" src="/js/exportFunc.js"></script>
 </head>
 
 <body>
   <header>
-    <h1 class="h1">MDN 페이지 공부</h1>
-    <nav>
-      <ul id="navUl">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/pages/mdn-table-iframe-svg.html">table, iframe, svg</a></li>
-        <li><a href="/pages/cssAttr.html">css 속성</a></li>
-        <li><a href="/pages/js-01-basic.html">js 기본</a></li>
-        <li><a href="/js-02-array_if.html">js array, if</a></li>
-      </ul>
-      <!-- <form style="display: flex; gap:1rem;">
-        <input class="form-control" type="search" name="q" placeholder="Search query">
-        <input class="btn btn-secondary px-3 py-0" type="submit" value="Go!">
-      </form> -->
-    </nav>
+    <h1>MDN 페이지 공부</h1>
+    <div data-include-path="/pages/navbar.html"></div>
   </header>
-  <hr>
   <main>
-
     <article>
-      <h2>Article heading</h2>
-      <p>vs code 단축키</p>
-      <kbd>한줄 지우기 ; ctrl + shift + K
-        <br>여러 단어 한번에 변경하기 ; ctrl + shift + L
-      </kbd>
-
+      <h2>페이지 구성</h2>
+      <p>home은 main 밑에 article, aside를 구성해서 grid를 적용</p>
+      <p>그외 페이지는 일반적으로 article 로만 구성</p>
       <section>
-        <h3>javascript function 분리 구성하기</h3>
-
-        <p>html page에서 script 적용 시에 &lt;script defer <strong>type="module"</strong> src="위치/파일">을 추가해야함.
-          <br>그리고 package.json 파일에
-          <pre><code>{"type": "module",
- "dependencies": ...
-} </code></pre>를 추가해야함</p>
-        <p>그리고 공유하고자 하는 파일에 export {함수1, 함수2, ...}
-          <br>사용하는 파일에서 import { 함수1, 함수2, ...} from "./공유하는파일" 해주어야함</p>
-        <p>그리고 함수 파일을 분리해서 별도로 구성하고
-          <br>원하는 값을 얻는 내용은 해당 html 파일에 넣어야함.
-          <br>안 그러고 함수를 정의하고 appendChild 를 사용하면 모든 html 파일에 해당
-          기능이 적용되어 모든 html 파일에 appendChild가 수행됨</p>
-
-        <p>그러니까 function은 별도의 파일로 정의하고 사용하는 쪽에서 함수를 호출하여
-          사용해야 함 </p>
+        <h3>Nav bar 구성</h3>
+        <p>Nav Menu는 기본적으로 CSS를 통해 구성</p>
+        <h4>&nbsp; 🎁 전체 구조</h4>
+        <pre style="line-height: 1rem">
+ .nav
+   ⁝-- a tag : go to Home
+   ⁝-- .subnav : for group have sub menu
+     ⁝-- .subnavbtn : for handle sub menu
+     ⁝-- .subnav-content : display none(hover display block)
+       ⁝-- a tag : go to sub menu
+       ⁝-- a tag : go to sub menu
+       ⁝-- a tag : go to sub menu
+   ⁝-- .subnav
+     ⁝-- .subnavbtn : for handle sub menu
+     ⁝-- .subnav-content : display none(hover display block)
+       ⁝-- a tag : go to sub menu
+       ⁝-- a tag : go to sub menu
+       ⁝-- a tag : go to sub menu
+   ⁝-- a tag : go to somewhere
+        </pre>
+        <h4>&nbsp; 🎁 javascript 구성</h4>
+        <h5>Menu 파일을 만들고 불러와서 사용하기</h5>
+        <ol>
+          <li>window.addEventListener("load", fuction() {}</li>
+          <li>document.getElementsByTagName("*");</li>
+          <li>Array.prototype.forEach.call(전체테그, function (el) {}</li>
+          <li>내부에서 html tag의 data 중 data-include-path(el.dataset.includePath)가 있으면 찾음</li>
+          <li>let xhttp = new XMLHttpRequest(); 를 생성하고</li>
+          <li>xhttp.onreadystatechange = function() {}</li>
+          <li>에러가 없으면 찾은 el의 outerHTML에 xhttp에서 받은 것을 text로 넣어줌 </li>
+          <li>el.outerHTML = this.responseText;</li>
+          <li>xhttp.open("GET", includePath, true);
+            xhttp.send(); 해줌</li>
+        </ol>
+        <h5>nav click 시 submenu를 보이게 하고 클릭한 nav link나 button에 디자인을 함</h5>
+        <ul>
+          <li>menu의 전체 button, a tag를 모두 찾음(querySelectorAll)</li>
+          <li>개별 링크나 버튼에 대해 클릭 시 action을 정의</li>
+          <li>window.location.href를 이용 현재 페이지와 비교해서 디자인 적용</li>
+          <li>위치 정보나 클릭 이벤트에 대해 display none 또는 block을 적용하여 숨기고, 표시하기</li>
+          <li>현재 위치에서 위, 아래, 옆으로 이동하는 방법</li>
+          <li>nextSibling(같은 계위), e.target(클릭 발생한 element), parentNode, firstElementChild, lastElementChild, parentElement</li>
+        </ul>
+        <h4>sub menu가 겹치는 경우에는 z-index를 조정해서 보이게 하는 것도 방법임</h4>
+<code>.subnav:hover .subnav-content {
+  display: block;
+  z-index: 20;
+}</code>
       </section>
-
       <section>
-        <h3>font size 폭이나 높이에 따라 자동 조절하기</h3>
-
-        <p> vh 나 vw를 사용하면 화면이나 자기가 속한 dom의 크기에 따라 자동 조절됨 </p>
-        <pre><code>nav ul {
-  display: flex;
-  justify-items: center;
-
-  justify-content: space-between;
-  gap: 2rem;
-  list-style-type: none;
-  font-size: 1.6vw;
-  font-weight: 600;
-  padding: 1vh 20px 0 20px;
-  text-align: center;
-}
-
-      </code></pre>
-
-        <p>
-          Vivamus fermentum semper porta. Nunc diam velit, adipscing ut
-          tristique vitae sagittis vel odio. Maecenas convallis ullamcorper
-          ultricied. Curabitur ornare, ligula semper consectetur sagittis,
-          nisi diam iaculis velit, is fringille sem nunc vet mi.
-        </p>
+        <h3>section 의 타이틀</h3>
+        <p> code에 줄바꿈 적용은 css에서 white-space: pre; 적용 </p>
       </section>
     </article>
 
     <!-- the aside content can also be nested within the main content -->
     <aside>
-      <h2>Related</h2>
+      <h2>Tips</h2>
 
-      <ul>
-        <li><a href="#">Oh I do like to be beside the seaside</a></li>
-        <li><a href="#">Oh I do like to be beside the sea</a></li>
-        <li><a href="#">Although in the North of England</a></li>
-        <li><a href="#">It never stops raining</a></li>
-        <li><a href="#">Oh well…</a></li>
+      <ul style="border-left: 1px solid rgb(65, 45, 45);">
+        <li><a href="/pages/tips/vs-code-shortcurts.html">vs code 단축치</a></li>
+        <li><a href="/pages/tips/js-func-share.html">javascript function 분리 구성하기</a></li>
+        <li><a href="/pages/tips/flexible-font-size.html">font size 폭이나 높이에 따라 자동 조절하기</a></li>
+        <li><a href="/pages/tips/jsCssStyle.html">css style을 js에서 다루는 방법</a></li>
+        <li><a href="/pages/tips/jsParentChild.html">dom에서 parent, child 찾아가기</a></li>
+        <li><a href="/pages/tips/secondIndex.html">두번째 index 페이지 샘플</a></li>
       </ul>
     </aside>
   </main>

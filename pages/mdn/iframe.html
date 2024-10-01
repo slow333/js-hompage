@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="/css/bootstrap.css" /> -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>MDN HTML documents</title>
+  <script defer src="/js/navbar.js"></script>
+  <script defer type="module" src="/js/exportFunc.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>MDN HTML Study page</h1>
+    <div data-include-path="/pages/navbar.html"></div>
+  </header>
+  <article>
+    <h2>video, ifram 삽입 방법 등 </h2>
+    <video src="rabbit320.webm" controls>
+      <p>
+        Your browser doesn't support HTML video. Here is a
+        <a href="rabbit320.webm">link to the video</a> instead.
+      </p>
+    </video>
+    <video controls>
+      <source src="rabbit320.mp4" type="video/mp4" />
+      <source src="rabbit320.webm" type="video/webm" />
+      <p>
+        Your browser doesn't support this video. Here is a
+        <a href="rabbit320.mp4">link to the video</a> instead.
+      </p>
+    </video>
+    <video controls width="200" height="auto" autoplay loop muted preload="auto" poster="poster.png">
+      <source src="rabbit320.mp4" type="video/mp4" />
+      <source src="rabbit320.webm" type="video/webm" />
+      <p>
+        Your browser doesn't support this video. Here is a
+        <a href="rabbit320.mp4">link to the video</a> instead.
+      </p>
+    </video>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/KFQRA40mh0U?si=A_AxHou3dTgkw8pr"
+      title="YouTube video player" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </article>
+  <footer>&copy;Copyright FOR ME seesak html css and javascript in MDN</footer>
+</body>
+
+</html>

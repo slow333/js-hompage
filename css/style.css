@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
 
 * {
   margin: 0;
@@ -8,89 +9,118 @@
 *::after {
   box-sizing: border-box;
 }
-h1 {
-  display: inline-block;
-  text-align: center;
-  background-color: #444;
-  color: aliceblue;
-  font-size: 2.5vw;
-  font-family: "Roboto", "Malgun Gothic", "Courier New", Courier, monospace;
-  font-weight: 900;
-  padding: 8px 20px;
-  margin: 0;
+body {
+  font-family: "Noto Sans KR", serif;
+  position: relative;
 }
-h2,
-h3 {
-  margin: 10px 0 10px 0;
-  font-family: "Roboto", "Malgun Gothic", "Courier New", Courier, monospace;
-}
-h3::before {
-  content: "» ";
-}
-p {
-  font-size: 1.2rem;
-  font-family: "Roboto", "Malgun Gothic";
-  margin: 4px 0;
-  text-transform: capitalize;
-  /* font-weight: bold; */
-}
-header {
-  display: flex;
-  justify-content: space-between;
-}
-nav {
-  display: flex;
-  justify-items: center;
-  justify-content: space-between;
-  background-color: blanchedalmond;
-  /* padding: 10px 0; */
-  margin: 0;
-}
-nav ul {
-  display: flex;
-  justify-items: center;
-
-  justify-content: space-between;
-  gap: 2rem;
-  list-style-type: none;
-  font-size: 1.6vw;
-  font-weight: 600;
-  padding: 1vh 20px 0 20px;
-  text-align: center;
+::-webkit-scrollbar {
+  display: none;
 }
 
-nav form {
-  /* padding-top: 5px; */
-  padding-right: 30px;
-}
-nav a:link {
-  color: blue;
-}
-nav a:visited {
-  color: blue;
-}
-nav a:hover {
-  cursor: pointer;
-  color: red;
-}
-/* nav li::before {
-  content: "😍 ";
-  } */
-/* #navUl {
-    margin: 0px;
-    padding: 10px 0;
-    } */
-
-article,
-aside,
-footer,
-section {
-  margin: 10px 15px;
-}
 article {
-  margin-bottom: 50px;
+  margin: 90px 10px 40px 20px;
+}
+aside {
+  margin: 0 0 44px 20px;
+}
+footer{
+  margin: 36px 10px 28px 20px;
+}
+aside a:visited, aside a:link {
+  text-decoration: none;
+  color: blue;
+}
+section {
+  border-left: 1px solid #999;
+  padding-left: 8px;
+  margin: 4px 0;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: wheat;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 4px;
+}
+
+/* ====== nav menu ====== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+}
+header h1 {
+  font-size: 1.4rem;
+  padding: 0 0 6px 1rem;
+  background-color: rgb(255, 116, 67);
+  color: wheat;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+  cursor: pointer;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+  padding: 0 16px 4px 16px;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+  z-index: 20;
+}
+
+/* ============= table tag */
 table {
   background-color: #efefef;
   text-align: center;
@@ -108,26 +138,59 @@ th {
   padding: 2px 8px;
 }
 
+/* =================== common element tag */
+h2,h3,h4,h5 {
+  margin: 10px 0 10px 0;
+  width: 90%;
+}
+h3::before {
+  content: "» ";
+}
+h3 {
+  font-size: 1.3rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
+h5 {
+  font-size: 1.1rem;
+}
+h5::before {
+  content: "↪ ";
+}
+p, pb {
+  font-size: 1rem;
+  font-family: "Roboto", "Malgun Gothic", serif;
+  margin: 4px 0;
+  padding: 2px 10px;
+  width: 94%;
+  word-break: break-word;
+  line-height: 1.5rem;
+}
+pb {
+  font-weight: bold;
+}
 pre,
 code,
 kbd {
   font-size: 1rem;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Consolas", "Lucida Sans Regular", sans-serif;
   margin: 12px 0;
-  font-style: italic;
+}
+code {
+  display: block;
+  word-wrap: break-word;
+  white-space: pre;
+  font-size: 0.95rem;
+}
+code::before {
+  content: "« ";
+}
+code::after {
+  content: " »";
 }
 kbd {
   color: #999;
-}
-footer {
-  position: fixed;
-  bottom: 0;
-  background-color: wheat;
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 10px;
 }
 
 .addedElement {
@@ -135,20 +198,40 @@ footer {
   padding-top: 10px;
 }
 
-hr,
-#hr {
-  margin: 0;
+hr {
+  margin: 1rem 0;
   padding: 0;
+  border: 1px dotted darkorange;
 }
-@media screen and (min-width: 1000px) {
+
+button#removeElement {
+  background-color: #f00;
+}
+button#removeElement:hover {
+  cursor: pointer;
+  background-color: darkblue;
+}
+
+.btnSearch {
+  background-color: green;
+  padding: 4px 9px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 9px;
+}
+/* media set */
+@media screen and (min-width: 800px) {
   main {
     display: grid;
     grid-template-columns: 3fr 1fr;
   }
-}
-@media screen and (max-width: 1000px) {
-  header {
-    display: flex;
-    flex-direction: column;
+  aside {
+    margin: 100px 20px 0 0;
   }
 }
+/*@media screen and (max-width: 800px) {*/
+/*  header {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*  }*/
+/*}*/

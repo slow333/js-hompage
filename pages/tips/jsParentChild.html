@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon2.ico">
+  <title>how to find html dom in js</title>
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <script defer src="/js/navbar.js"></script>
+  <script defer type="module" src="/js/exportFunc.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="h1">Handle html DOM in js</h1>
+    <div data-include-path="/pages/navbar.html"></div>
+  </header>
+  <main>
+    <article>
+      <h1>TIPs Page</h1>
+     <hr>
+      <section>
+        <h3>js에서 html dom 위치 이동하기</h3>
+        <h4> parent node, element로 이동 하기 </h4>
+        <p>parentElement는 노드의 부모 요소를 반환하는데, 부모가 없거나 부모가 DOM 요소가 아니라면 null을 반환한다.
+          parentElement의 반환값은 언제나 DOM 요소이거나 null이다.</p>
+        <p>parentNode가 부모가 요소인지 아닌지 따지지 않고 그냥 요소 노드를 반환해 준다면
+          parentElement의 경우에는 부모가 꼭 요소여야만 Element 형식으로 반환하고 그렇지 않으면 null을 반환한다는 것이다.</p>
+        <code>  const el = document.getElementById("greeting");
+  el.parentElement.parentElement;
+  el.parentNode.parentElement;</code>
+        <h4> child node, element로 이동 하기 </h4>
+        <p>firstChild는 first childe node를 element node 또는 text node, comment node로 반환한다.</p> <p>firstElementChild는 first child node를 element node로만 반환을 한다 (text와 comment nodes를 무시).
+        <p><b>따라서 textContent에 접근하거나 style을 바꾼다든지 등등 HTML code에 반영을 위한 접근이 필요하다면 firstElementChild을 쓴다.</b></p>
+  <code>  const el = document.getElementById("greeting");
+  el.firstElementChild.textContent;
+  el.lastElementChild.style;</code>
+        <h4> sibling(형재 간) node, element로 이동 하기 </h4>
+        <p>sibling 간 이동하면 테그 간을 하나의 text로 인식함</p>
+        <code>  const el = document.getElementById("greeting");
+  el.nextSibling;
+  el.previousSibling;</code>
+        <h4> node 추가/제거 하기</h4>
+        <code>  el.appendChild(newElement);
+  el.parentElement.removeChild(panel)</code>
+      </section>
+    </article>
+  </main>
+
+  <footer>©Copyright 2050 by nobody. All rights reversed.</footer>
+</body>
+
+</html>

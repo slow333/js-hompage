@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>MDN HTML documents</title>
+  <script defer src="/js/navbar.js"></script>
+  <script defer type="module" src="/js/exportFunc.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>MDN HTML Study page</h1>
+    <div data-include-path="/pages/navbar.html"></div>
+  </header>
+  <article>
+    <h2>Table 컬러, 컬럼 선택 등</h2>
+    <pre>table {
+  background-color: #efefef;
+  text-align: center;
+}
+table,
+td,
+th {
+  border: 1px solid #444;
+  border-collapse: collapse;
+}
+th[colspan="2"] {
+  color: red;
+}
+th {
+  padding: 2px 8px;
+}
+## table 내에서 컬럼별 선택 방법 ##
+&lt;table>
+  &lt;colgroup>
+    &lt;col style="background-color: yellow" />
+    &lt;col style="background-color: yellow" />
+    &lt;col style="background-color: yellow; border: 4px solid black;" />
+  &lt;/colgroup>
+  </pre>
+    <table>
+      <colgroup>
+        <col style="background-color: yellow" />
+        <col style="background-color: yellow" />
+        <col style="background-color: yellow; border: 4px solid black;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th id="split" colspan="2">&nbsp;</th>
+          <th>Name</th>
+          <th>Mass(10<sup>24</sup>)</th>
+          <th>Diameter(km)</th>
+          <th>Density(kg/m<sup>3</sup>)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="4" colspan="2">Terrestrial planets</th>
+          <th>Mercury</th>
+          <td>0.330</td>
+          <td>4879</td>
+          <td>5427</td>
+        </tr>
+        <tr>
+          <th>Venus</th>
+          <td>0.330</td>
+          <td>4879</td>
+          <td>5427</td>
+        </tr>
+        <tr>
+          <th>Earth</th>
+          <td>0.330</td>
+          <td>4879</td>
+          <td>5427</td>
+        </tr>
+        <tr>
+          <th>Mars</th>
+          <td>0.330</td>
+          <td>4879</td>
+          <td>5427</td>
+        </tr>
+        <tr>
+          <th rowspan="4">Jovian planets</th>
+          <th rowspan="2">Gas giants</th>
+          <th>Jupiter</th>
+          <td>1898</td>
+          <td>142.894</td>
+          <td>687</td>
+        </tr>
+        <tr>
+          <th>Saturn</th>
+          <td>1898</td>
+          <td>142.894</td>
+          <td>687</td>
+        </tr>
+        <tr>
+          <th rowspan="2">Ice giants</th>
+          <th>Uranus</th>
+          <td>1898</td>
+          <td>142.894</td>
+          <td>687</td>
+        </tr>
+        <tr>
+          <th>Nepturne</th>
+          <td>1898</td>
+          <td>142.894</td>
+          <td>687</td>
+        </tr>
+        <tr>
+          <th colspan="2">Pluto</th>
+          <th>Pluto</th>
+          <td>0.0146</td>
+          <td>2370</td>
+          <td>2095</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </article>
+  <footer>&copy;Copyright FOR ME seesak html css and javascript in MDN</footer>
+</body>
+
+</html>

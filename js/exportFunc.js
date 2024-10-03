@@ -1,24 +1,23 @@
-let separator = ": &nbsp;";
-
-let newEl;
-// 하나의 node를 원하는 tag로 생성함
-function createNode(el) {
- newEl = document.createElement(`${el}`);
-}
-// 새로운 node를 만들어서 값을 넣어줌, 이후 article에 추가
-function createElement(value, el = "div") {
-  createNode(el);
+function createEl(value, el = "div") {
+  let newEl = document.createElement(`${el}`);
   newEl.classList.add("addedElement");
-  newEl.innerHTML = `${value}, `;
-  document.querySelector("article").appendChild(newEl);
+  newEl.innerHTML = `${value} : `;
+
+  const section = document.createElement("section");
+  document.querySelector("article").appendChild(section);
+  section.appendChild(newEl);
 }
 
 // array나 여러 개를 넣어 주면 새로운 element를 생성해서 값을 넣어줌
 function addElements(...theArgs) {
-  for (const arg of theArgs) createElement(arg, "span");
-  createNode("div");
-  newEl.innerHTML = "=======================================";
-  document.querySelector("article").appendChild(newEl);
+  for (const arg of theArgs) {
+    let newEl = document.createElement("span");
+    newEl.innerHTML = `${arg} : `;
+
+    const section = document.createElement("section");
+    document.querySelector("article").appendChild(section);
+    section.appendChild(newEl);
+  }
 }
 
 function removeElements() {
@@ -29,8 +28,8 @@ function removeElements() {
 
 function concatAndAddEl() {
   let args = Array.prototype.slice.call(arguments, 0); // 첫번째 부터 입력 값을 가지고 옮
-  let text = args.join(separator);
-  createElement(text);
+  let text = args.join(": &nbsp;");
+  createEl(text);
 }
 
 function setCurrentPage() {
@@ -48,4 +47,4 @@ setTimeout(function () {
   setCurrentPage();
 }, 500);
 
-export { createElement, removeElements, addElements, concatAndAddEl };
+export { removeElements, addElements, concatAndAddEl };

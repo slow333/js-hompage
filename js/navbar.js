@@ -1,4 +1,6 @@
 const requestUrl = "/pages/navbar.html";
+const footerUrl = "/pages/footer.html";
+
 let req = new XMLHttpRequest();
 
 req.open("GET", requestUrl);
@@ -9,6 +11,16 @@ req.onload = function () { // async event handler
    let text = req.response;
    document.querySelector("#menuNavBar").outerHTML = text;
    setCurrentPageNav();
+}
+
+let footerReq = new XMLHttpRequest();
+
+footerReq.open("GET", footerUrl);
+footerReq.responseType = "text";
+footerReq.send();
+footerReq.onload = function () {
+   let text = footerReq.response;
+   document.querySelector("footer").outerHTML = text;
 }
 
 function setCurrentPageNav() {
@@ -40,7 +52,7 @@ function setCurrentPageNav() {
             eNextSibling.style.display = "flex";
             eNextSibling.style.justifyContent = "center";
             article.style.marginTop = '92px';
-            target.style.backgroundColor = 'red';
+            target.style.backgroundColor = 'orangered';
          }
       })
    });
@@ -50,10 +62,10 @@ function setCurrentPageNav() {
          suba.style.backgroundColor = "darkred";
          suba.parentNode.style.display = "flex";
          suba.parentNode.style.justifyContent = "center";
-         suba.parentNode.parentNode.style.backgroundColor = "red";
+         suba.parentNode.parentNode.style.backgroundColor = "orangered";
          article.style.marginTop = '92px';
       } else {
-         suba.style.backgroundColor = "red";
+         suba.style.backgroundColor = "orangered";
       }
    })
 

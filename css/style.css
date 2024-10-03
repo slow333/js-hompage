@@ -11,15 +11,24 @@
 }
 body {
   font-family: "Noto Sans KR", serif;
+  height: 100%;
   position: relative;
 
 }
 ::-webkit-scrollbar {
   display: none;
 }
+main {
+  margin: 10px 10px 5px 20px;
+  position: relative;
+  min-height: calc(94vh - 4rem);
+}
 
 article {
-  margin: 70px 10px 50px 20px;
+  margin: 70px 10px 0 20px;
+  position: relative;
+  /* height: auto; */
+  min-height: calc(93.7vh - 4rem);
 }
 section {
   border: 1px solid #aaa;
@@ -31,16 +40,10 @@ aside {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  background-color: orangered;
-  color: #fff;
-  display: block;
   width: 100%;
-  margin: 0;
-  padding: 8px 1rem;
-  box-shadow: 0 0 4px 0 black, 0 0 10px 0 gray;
-
+  padding: 0;
+  position : absolute;
+  height: 2rem;
 }
 aside a:visited, aside a:link {
   text-decoration: none;
@@ -53,39 +56,35 @@ header {
   top: 0;
   width: 100%;
   z-index: 9;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   align-items: center;
   /* background-image: url("/images/header.png"); */
   background-size: cover;
   /* opacity: 0.4; */
   background-color: #333;
-  min-width: 900px;
-  border-top: 4px solid orangered;
-  border-bottom: 4px solid orangered;
+  /* min-width: 900px; */
+  border: 4px solid orangered;
+  /* border-bottom: 4px solid orangered; */
   /* box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.19); */
 }
 header h1 {
-  font-size: 1.4rem;
-  padding: 6px 2rem;
-  /* background-color: rgb(255, 116, 67); */
-  color: wheat;
+  display: none;
+  font-size: 1.3rem;
+  padding: 6px 1rem;
+  color: orangered;
   width: auto;
   margin: 0;
-  border-right: solid 4px orangered;
-  border-left: solid 4px orangered;
 }
 .navbar {
   overflow: hidden;
   background-color: #333;
   display: flex;
-  border-right: solid 4px orangered;
-  border-left: solid 4px orangered;
 }
 .navbar a, .subnav .subnavbtn {
-  font-size: 16px;
+  font-size: 14px;
   color: white;
-  padding: 10px 16px;
+  padding: 10px 18px;
 }
 .navbar a {
   text-align: center;
@@ -106,7 +105,7 @@ header h1 {
 }
 
 .navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: red;
+  background-color: orangered;
   cursor: pointer;
 }
 
@@ -116,7 +115,7 @@ header h1 {
   left: 50%;
   right: auto;
   transform: translateX(-50%);
-  background-color: red;
+  background-color: orangered;
   width: 100%;
   /* 첫번째 적용 : 우측이동, 아래이동, 3번째; 흐린정도 깊이, 4번째; 전체 깊이 // 두번째 적용*/
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.1);
@@ -128,7 +127,7 @@ header h1 {
   float: right;
   color: white;
   text-decoration: none;
-  padding: 8px 16px 4px 16px;
+  padding: 8px 10px 4px 10px;
 }
 
 .subnav-content a:hover {
@@ -155,7 +154,7 @@ th {
   border-collapse: collapse;
 }
 th[colspan="2"] {
-  color: red;
+  color: orangered;
 }
 th {
   padding: 2px 8px;

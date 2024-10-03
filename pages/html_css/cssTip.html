@@ -17,7 +17,15 @@
   </header>
   <article>
     <section>
-      <h2>CSS Box shadow</h2>
+      <h3>footer 하단에 고정하기 NOT fixed</h3>
+      <ul>
+        <li>우선 body의 height를 100%</li>
+        <li>article의 min-height: calc(93.7vh - 4rem); 고정된 상단 navbar의 높이를 고려해서 vh를 적용하고 하단 footer의 높이를 뺌 </li>
+        <li>footer의 position: absolute 를 하고 height를 지정</li>
+      </ul>
+    </section>
+    <section>
+      <h3>CSS Box shadow</h3>
       <ul>
         <li>/* 첫번째 적용 : 우측이동, 아래이동, 3번째; 흐린정도 깊이, 4번째; 전체 깊이 그리고 색*/</li>
         <li>/* 2개를 적용하면 두개가 다 적용되어 그라데이션 효과가 있음 */</li>

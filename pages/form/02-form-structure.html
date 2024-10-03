@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/form.css" />
+  <script async src="/js/navbar.js"></script>
+  <script defer type="module" src="/js/exportFunc.js"></script>
+  <title>Web form</title>
+</head>
+
+<body>
+  <header>
+    <h1 class="h1">Web form</h1>
+    <div id="menuNavBar"></div>
+  </header>
+  <article>
+    <h2>Web form structure : fieldset, legend</h2>
+      <p> fieldset 요소는 동일한 목적을 갖는 위젯 그룹을 생성하는 편리한 방법입니다.</p>
+    <section>
+      <h3>fieldset, legend form</h3>
+      <p>type="radio" value="small" ... name="size"</p>
+      <form>
+        <fieldset>
+          <legend>legend : Fruit juice size</legend>
+          <p>
+            <input type="radio" name="size" id="size_1" value="small" />
+            <label for="size_1">Small</label>
+          </p>
+          <p>
+            <input type="radio" name="size" id="size_2" value="medium" />
+            <label for="size_2">Medium</label>
+          </p>
+          <p>
+            <input type="radio" name="size" id="size_3" value="large" />
+            <label for="size_3">Large</label>
+          </p>
+        </fieldset>
+      </form>
+      <p>이렇게 하면 screen reader에서 "Fruit juice size small" ... 을 순서대로 읽어 줌.</p>
+    </section>
+    <section>
+      <h4>type="checkbox" value="cherry"</h4>
+      <p>label의 for 값은 input의 id를 지정함(click 가능)</p>
+      <form>
+        <p>
+          <input type="checkbox" id="taste_1" name="taste_cherry" value="cherry" />
+          <label for="taste_1">I like cherry</label>
+        </p>
+        <p>
+          <input type="checkbox" id="taste_2" name="taste_banana" value="banana" />
+          <label for="taste_2">I like banana</label>
+        </p>
+      </form>
+    </section>
+    <section>
+      <h4>Multiple labels</h4>
+      <div>
+        <p>Required fields are followed by <span aria-label="required">*</span>.</p>
+        <label for="username">Name: <span aria-label="required">*</span></label>
+        <input id="username" type="text" name="username" required />
+      </div>
+    </section>
+    <section>
+      <form action="/sendUrl">
+        <div class="inputContainer">
+          <h2>Contact information</h2>
+          <fieldset>
+            <legend>Title</legend>
+            <ul style="list-style: none; display: flex;justify-content: space-around;margin:0;text-align: left;">
+              <li>
+                <label for="title_1">
+                  <input type="radio" id="title_1" name="title" value="A" />
+                  Ace
+                </label>
+              </li>
+              <li>
+                <label for="title_2">
+                  <input type="radio" id="title_2" name="title" value="K" />
+                  King
+                </label>
+              </li>
+              <li>
+                <label for="title_3">
+                  <input type="radio" id="title_3" name="title" value="Q" />
+                  Queen
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+          <p>
+            <label for="name">
+              <span>Name: </span>
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input type="text" id="name" name="username" required />
+          </p>
+          <p>
+            <label for="mail">
+              <span>Email: </span>
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input type="email" id="mail" name="usermail" required />
+          </p>
+          <p>
+            <label for="pwd">
+              <span>Password: </span>
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input type="password" id="pwd" name="password" required />
+          </p>
+          <h2>Payment information</h2>
+          <p>
+            <label for="card">
+              <span>Card type:</span>
+            </label>
+            <select id="card" name="usercard">
+              <option value="visa">Visa</option>
+              <option value="mc">Mastercard</option>
+              <option value="amex">American Express</option>
+            </select>
+          </p>
+          <p>
+            <label for="number">
+              <span>Card number:</span>
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input type="tel" id="number" name="cardnumber" required />
+          </p>
+          <p>
+            <label for="expiration">
+              <span>Expiration date:</span>
+              <strong><span aria-label="required">*</span></strong>
+            </label>
+            <input type="text" id="expiration" name="expiration" required placeholder="MM/YY"
+              pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" />
+          </p>
+        </div>
+        <div class="submitContainer">
+          <p>
+            <button type="submit">Validate the payment</button>
+          </p>
+        </div>
+      </form>
+    </section>
+  </article>
+
+  <footer></footer>
+</body>
+
+</html>

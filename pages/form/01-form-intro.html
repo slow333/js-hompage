@@ -21,6 +21,30 @@
   <article>
     <h2>Web form 이란 ?</h2>
     <section>
+      <h3>form submit data 여러개 가져오기</h3>
+      <code>&lt;form id="form">
+  &lt;input type="text" name="text1" value="foo" />
+  &lt;input type="text" name="text2" value="bar" />
+  &lt;input type="text" name="text2" value="baz" />
+  &lt;input type="checkbox" name="check" checked disabled />
+  &lt;button name="intent" value="save">Save&lt;/button>
+  &lt;button name="intent" value="saveAsCopy">Save As Copy&lt;/button>
+&lt;/form>  
+&lt;output id="output">&lt;/output>
+  ## JS
+  const form = document.getElementById("form");
+  const submitter = document.querySelector("button[value=save]");
+  const formData = new FormData(form, submitter);
+
+  const output = document.getElementById("output");
+
+  for (const [key, value] of formData) {
+    output.textContent += `${key}: ${value}\n`;
+  }
+Object.fromEntries(formdata); =>객체를 반환 </code>
+
+    </section>
+    <section>
       <p> HTML 요소를 사용합니다: form, label, input, textarea 및 button</p>
       <code>&lt;form action="/my-handling-form-page" method="post"&lt;…&lt;/form&gt;</code>
       <ul>

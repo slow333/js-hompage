@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon2.ico">
+  <title>how to handle css style in js</title>
+  <!-- <link rel="stylesheet" href="/css/bootstrap.css" /> -->
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <script defer src="/js/navbar.js"></script>
+  <script defer type="module" src="/js/exportFunc.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="h1">Handle css in js</h1>
+   <div id="menuNavBar"></div>
+  </header>
+  <main>
+    <article>
+      <h1>TIPs Page</h1>
+     <hr>
+      <section>
+        <h3>js에서 css를 다루기 위한 방법</h3>
+
+        <h4> element에 style 적용하기 </h4>
+        <p>style.css속성명 -기존에 정의된 style에 새로운 속성을 추가</p>
+        <p>style.cssText - 기존에 정의된 style을 지우고, cssText로 덮어 씀</p>
+        <code>#javascript file
+  const el = document.getElementById("greeting");
+
+  el.style.backgroundColor = "red";
+  el.style.color = "red";
+  el.style.fontWeight = "bold";
+  el.style.backgroundImage = "url(/img/waring.png)";
+  el.style.cssText = 'color:blue; background-color: yellow'; //기존 것 덮어 씀, 조심
+  el.classList.add(newClassName);
+  el.textContent ="new message";
+  el.setAttribute("class","msgBox");
+      </code>
+        <h4>element에서 style 속성 읽기</h4>
+        <h5>style 속성과 getComputedStyle()을 사용하는 것에는 차이가 있습니다.</h5>
+
+          <p>style 속성 : inline으로 정의된 style 속성만 읽어옵니다.</p>
+          <p>getComputedStyle() : inline 뿐만 아니라, style 및 class속성,
+          css 파일로 정의된 style 속성을 모두 읽어옵니다</p>
+
+        <h5>style 속성 읽어 오기</h5>
+        <code>  Element.innerText +=  element.style + '\n';
+  Element.innerText +=  element.style.color + '\n';
+  Element.innerText +=  element.style.backgroundColor + '\n';
+        </code>
+        <h5>getComputedStyle() 하면 CSS 속성값을 답은 객체를 리턴</h5>
+        <code>// 3. getComputedStyle (스타일 정보 읽어오기)
+  const color = getComputedStyle(element).color;
+  const bgColor = getComputedStyle(element).backgroundColor;
+
+  // 4. Style 출력
+  printElement.innerText =  'color : ' + color + '\n';
+  printElement.innerText +=  'background-color : ' + bgColor + '\n';
+        </code>
+      </section>
+    </article>
+  </main>
+
+  <footer>©Copyright 2050 by nobody. All rights reversed.</footer>
+</body>
+
+</html>

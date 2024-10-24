@@ -25,7 +25,6 @@
       <code>&lt;form id="form">
   &lt;input type="text" name="text1" value="foo" />
   &lt;input type="text" name="text2" value="bar" />
-  &lt;input type="text" name="text2" value="baz" />
   &lt;input type="checkbox" name="check" checked disabled />
   &lt;button name="intent" value="save">Save&lt;/button>
   &lt;button name="intent" value="saveAsCopy">Save As Copy&lt;/button>
@@ -42,7 +41,48 @@
     output.textContent += `${key}: ${value}\n`;
   }
 Object.fromEntries(formdata); =>객체를 반환 </code>
+      <form id="form">
+        <input type="text" name="text1" value="foo" />
+        <input type="text" name="text2" value="bar" />
+        <button name="intent" value="sum" type="submit">Sum</button>
+        <button name="intent" value="save" type="button">Save</button>
+      </form>
+      <div id="output"></div>
+      <script>
+        const output = document.getElementById('output');
+        const formElem = document.getElementById("form");
+        formElem.addEventListener("submit", (e) => {
+          // on form submission, prevent default
+          e.preventDefault();
 
+          // construct a FormData object, which fires the formdata event
+          const formData = new FormData(formElem);
+          // formdata gets modified by the formdata event
+          console.log(formData.get("text1")); // foo
+          console.log(formData.get("text2")); // bar
+        });
+
+        // formdata handler to retrieve data
+        formElem.addEventListener("formdata", (e) => {
+          console.log("formdata fired");
+
+          // modifies the form data
+          const formData = e.formData;
+          // formdata gets modified by the formdata event
+          formData.set("text1", formData.get("text1"));
+          formData.set("text2", formData.get("text2"));
+
+          output.innerText = sum(formData.get("text1"), formData.get("text2"));
+        });
+        function sum(a, b) {
+          if(!isFinite(a) || !isFinite(b)) {
+            return `숫자가 아님 a; ${a} b; ${b}`
+          } else {
+            return +a + +b;
+          }
+        }
+
+      </script>
     </section>
     <section>
       <p> HTML 요소를 사용합니다: form, label, input, textarea 및 button</p>

@@ -52,7 +52,6 @@ Object.fromEntries(formdata); =>객체를 반환 </code>
         const output = document.getElementById('output');
         const formElem = document.getElementById("form");
 
-
         formElem.addEventListener("submit", (e) => {
           // on form submission, prevent default
           e.preventDefault();
@@ -61,6 +60,8 @@ Object.fromEntries(formdata); =>객체를 반환 </code>
           // formdata gets modified by the formdata event
           console.log(formData.get("text1")); // foo
           console.log(formData.get("text2")); // bar
+          console.log(Object.fromEntries(formData)["text1"]);
+          output.innerText = sum(formData.get("v1"), formData.get("v2"));
         });
 
         // formdata handler to retrieve data
@@ -71,8 +72,6 @@ Object.fromEntries(formdata); =>객체를 반환 </code>
           // formdata gets modified by the formdata event
           formData.set("v1", formData.get("text1"));
           formData.set("v2", formData.get("text2"));
-
-          output.innerText = sum(formData.get("v1"), formData.get("v2"));
         });
 /**        formElem.onformdata = e => {
           e.preventDefault();
@@ -83,10 +82,12 @@ Object.fromEntries(formdata); =>객체를 반환 </code>
         } */
 
         function sum(a, b) {
-          if(!isFinite(a) || !isFinite(b)) {
-            return `숫자가 아님 a; ${a} b; ${b}`
+          const pasedA = parseInt(a);
+          const pasedB = parseInt(b);
+          if(!isFinite(pasedA) || !isFinite(pasedB)) {
+            return `숫자가 아님 a; ${pasedA} b; ${pasedB}`
           } else {
-            return +a + +b;
+            return pasedA + pasedB;
           }
         }
 
